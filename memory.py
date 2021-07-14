@@ -14,6 +14,7 @@ class MemoryGame(tk.Frame):
         self.selected_card = []
         # カードの絵柄パターン
         self.pattern_list = ["◎", "△", "☆", "◇", "□", "@", "#", "$", "&", "〇", "▽", "●", "▼", "▲", "★", "■"]
+        # 表示カードの絵柄リスト
         self.card_pattern_list = []
         # 各カードに割り当てるStringVarを管理するリスト
         self.sv_list = []
