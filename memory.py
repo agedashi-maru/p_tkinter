@@ -90,6 +90,7 @@ class MemoryGame(tk.Frame):
         """
         
         self.card_pattern_list = []
+        self.selected_card = []
         num = int(self.COLUMN * self.ROW / 2)
         random.shuffle(self.pattern_list)
         for i in range(num):
@@ -121,8 +122,8 @@ class MemoryGame(tk.Frame):
             sv.set(i+1)
         
         self.t = datetime.datetime.strptime("00:00", "%M:%S")
-        self.count_time()
         self.create_pattern_list()
+        self.count_time()
 
 
 if __name__ == "__main__":
