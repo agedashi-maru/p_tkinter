@@ -10,7 +10,7 @@ class MemoryGame(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master=master)
         
-        # 選択されたカードを保持するdict
+        # 選択されたカードを保持するリスト
         self.selected_card = []
         # カードの絵柄パターン
         self.pattern_list = ["◎", "△", "☆", "◇", "□", "@", "#", "$", "&", "〇", "▽", "●", "▼", "▲", "★", "■"]
