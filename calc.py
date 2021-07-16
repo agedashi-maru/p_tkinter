@@ -6,7 +6,8 @@ class Calc(ttk.Frame):
     def __init__(self, master=None):
         super().__init__(master=master)
         
-        self.calc_str = ""
+        self.expr = ""
+        self.num = ""
         self.create_widgets(master)
 
 
@@ -62,41 +63,43 @@ class Calc(ttk.Frame):
         """
         数字ボタン用の処理
         """
-        self.calc_str += event.widget["text"]
-        self.label_str.set(event.widget["text"])
+        self.num += event.widget["text"]
+        self.label_str.set(self.num)
 
 
     def push_operator_btn(self, event):
         """
         「+ - x ÷」ボタン用の処理
         """
-        text = event.widget["text"]
+        operator = event.widget["text"]
 
-        if text == "+":
-            self.calc_str += "+"
-        elif text == "-":
-            self.calc_str += "-"
-        elif text == "x":
-            self.calc_str += "*"
-        elif text == "÷":
-            self.calc_str += "/"
-
-        self.label_str.set(event.widget["text"])
+        if operator == "x":
+            operator = "*"
+        elif operator == "÷":
+            operator = "/"
+        
+        self.expr = self.expr + self.num + operator
+        self.label_str.set(operator)
+        self.num = ""
 
 
     def push_equal_bnt(self, event):
         """
         「=」ボタン用の処理
         """
-        equal_str = eval(self.calc_str)
+        self.expr = self.expr + self.num
+        equal_str = eval(self.expr)
         self.label_str.set(equal_str)
+        self.num = ""
+        self.expr = ""
 
 
     def push_clear_bnt(self, event):
         """
         「c」ボタン用の処理
         """
-        self.calc_str = ""
+        self.num = ""
+        self.expr = ""
         self.label_str.set("0")
         
 
